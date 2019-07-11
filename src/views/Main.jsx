@@ -1,5 +1,7 @@
 import React from "react";
-import { checkSession, logOut } from '../api'
+import { observer } from 'mobx-react'
+import { logOut } from '../api'
+import Store from '../store'
 
 class Main extends React.Component {
   constructor(props) {
@@ -10,12 +12,21 @@ class Main extends React.Component {
 
   componentDidMount() {
     const { state } = this.props.location;
-    console.log(state);
 
     if (state) {
+      Store.setUser(state);
+      Store.user.getProjects();
+      Store.user.checkInvites();
+      console.log(Store.user);
 
     } else {
-      checkSession()
+      Store.checkUser()
+        .then(res => {
+          if (!res) {
+            this.props.history.replace('/')
+            return
+          }
+        })
     }
   }
 
@@ -30,11 +41,10 @@ class Main extends React.Component {
   render() {
     return (
       <section className="main">
-        DIS IS MAIN
-        <button onClick={this.handleLogOut}>LOG OUT</button>
+        {Store.user && Store.user.full_name}
       </section>
     )
   }
 }
 
-export default Main
+export default observer(Main)
