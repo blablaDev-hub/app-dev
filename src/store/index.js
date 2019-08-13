@@ -1,3 +1,4 @@
+import { createContext } from 'react'
 import Store from './models/Store'
 
-export default Store.create({})
+export default createContext(Store.create({}))

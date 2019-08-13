@@ -1,11 +1,13 @@
-import React from "react";
-import { checkSession } from '../api'
+import React, { useContext } from "react"
+import Store from './../store'
 
 const Welcome = ({ history }) => {
-  checkSession()
+  const store = useContext(Store)
+
+  store.checkUser()
     .then(res => {
-      if (res.success) {
-        history.replace('/app', res.data)
+      if (res) {
+        history.replace('/app')
       }
     })
     .catch(console.error)
