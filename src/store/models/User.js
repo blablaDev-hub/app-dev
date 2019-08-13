@@ -28,7 +28,6 @@ const User = types
       try {
         const res = yield checkProjectInvites()
         if (res.success) {
-          console.log(res.data);
           self.invites = res.data.map(i => Invite.create(i))
           return true
         } else throw Error(res.reason)
@@ -40,7 +39,6 @@ const User = types
       try {
         const res = yield getUserProjects()
         if (res.success) {
-          console.log(res.data);
           self.projects = res.data.map(p => Project.create(p))
           return true
         } else throw Error(res.reason)
@@ -52,7 +50,6 @@ const User = types
       try {
         const res = yield uploadUserCV(cv)
         if (res.success) {
-          console.log(res.data);
           return true
         } else throw Error(res.reason)
       } catch (err) {
