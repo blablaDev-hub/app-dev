@@ -1,5 +1,6 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from 'react';
 import { observer } from 'mobx-react'
+import MainNav from '../components/MainNav'
 import Store from '../store'
 
 function Main({ history }) {
@@ -23,9 +24,9 @@ function Main({ history }) {
   }
 
   return (
-    <section className="main">
+    <section className="route main">
+      <MainNav logOut={handleLogOut} />
       {store.user && store.user.full_name}
-      <button onClick={handleLogOut}>LOGOUT</button>
     </section>
   )
 }

@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,900&display=swap');
-@import "./reset";
 @import "./variables";
+@import "./reset";
 @import "./_components/welcome";
 @import "./_components/auth";
 @import "./_components/footer";
+@import "./_components/nav";
 
 * {
   box-sizing: border-box;
@@ -44,4 +45,9 @@ code {
   flex-flow: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.route {
+  width: 100%;
+  max-width: 1200px;
 }

@@ -13,11 +13,12 @@ const Welcome = ({ history }) => {
     .catch(console.error)
 
   return (
-    <main className="welcome">
+    <section className="route welcome">
       <div className="welcome__login-box">
         <h1 className="welcome__copy">login with GitHub</h1>
         <a
           href="https://github.com/login/oauth/authorize?scope=read:user,repo:invite&client_id=9169882d6bdee7419193" className="welcome__link"
+          title="login"
         >
           <img
             src={require('./../assets/img/logo-github-black.png')}
@@ -32,7 +33,7 @@ const Welcome = ({ history }) => {
         alt="bbDev roadmap"
         sizes=""
       />
-    </main>
+    </section>
   )
 }
 

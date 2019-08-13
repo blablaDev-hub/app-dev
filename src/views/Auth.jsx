@@ -20,7 +20,7 @@ const Auth = ({ history, location }) => {
     })
 
   return (
-    <section className="auth">
+    <section className="route auth">
       <h2 className="auth__copy">
       successful auth! you're being redirected to the app
       </h2>
