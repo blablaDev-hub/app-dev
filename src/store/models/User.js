@@ -1,7 +1,7 @@
 import { types, flow } from "mobx-state-tree"
 import Project from './Project'
 import Invite from './Invite'
-import { checkProjectInvites, getUserProjects, uploadUserCV, logOut } from "../../api"
+import { checkProjectInvites, getUserProjects, uploadUserCV } from "../../api"
 
 const User = types
   .model({
@@ -56,14 +56,6 @@ const User = types
         return false
       }
     }),
-    logOut: flow(function*() {
-      try {
-        const res = yield logOut();
-        if (res.success) return true
-      } catch (err) {
-        return false
-      }
-    })
   }))
 
 export default User

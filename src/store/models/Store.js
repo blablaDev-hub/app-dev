@@ -1,6 +1,6 @@
 import { types, flow } from "mobx-state-tree"
 import User from './User'
-import { checkSession, authUser } from '../../api'
+import { checkSession, authUser, logOut } from '../../api'
 
 const Store = types
   .model({
@@ -29,6 +29,14 @@ const Store = types
         } else throw Error('code not valid');
       } catch (err) {
         return false;
+      }
+    }),
+    logOut: flow(function*() {
+      try {
+        const res = yield logOut();
+        if (res.success) return true
+      } catch (err) {
+        return false
       }
     }),
     setUser(user) {

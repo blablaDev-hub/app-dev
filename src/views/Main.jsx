@@ -16,7 +16,7 @@ function Main({ history }) {
   }, [])
 
   const handleLogOut = () => {
-    store.user.logOut()
+    store.logOut()
       .then(_ => {
         history.replace('/');
       })
