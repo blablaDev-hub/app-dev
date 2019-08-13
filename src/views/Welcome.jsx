@@ -4,7 +4,7 @@ import Store from '../store'
 const Welcome = ({ history }) => {
   const store = useContext(Store)
 
-  store.checkUser()
+  store.checkSession()
     .then(res => {
       if (res) {
         history.replace('/app')

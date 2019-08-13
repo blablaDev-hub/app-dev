@@ -1,53 +1,36 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { observer } from 'mobx-react'
-import { logOut } from '../api'
 import Store from '../store'
 
-class Main extends React.Component {
-  constructor(props) {
-    super(props)
+function Main({ history }) {
+  const store = useContext(Store)
 
-    this.handleLogOut = this.handleLogOut.bind(this);
-  }
+  useEffect(() => {
+    store.checkSession()
+      .then(res => {
+        if (!res) {
+          history.replace('/')
+          return
+        } else {
+          store.user.getProjects();
+          store.user.checkInvites();
+        }
+      })
+  }, [])
 
-  componentDidMount() {
-    const { state } = this.props.location;
-
-    if (state) {
-      Store.setUser(state);
-      Store.user.getProjects();
-      Store.user.checkInvites();
-      console.log(Store.user);
-
-    } else {
-      Store.checkUser()
-        .then(res => {
-          if (!res) {
-            this.props.history.replace('/')
-            return
-          } else {
-            Store.user.getProjects();
-            Store.user.checkInvites();
-          }
-        })
-    }
-  }
-
-  handleLogOut() {
-    const { history } = this.props;
-    Store.user.logOut()
+  const handleLogOut = () => {
+    store.user.logOut()
       .then(_ => {
         history.replace('/');
       })
   }
 
-  render() {
-    return (
-      <section className="main">
-        {Store.user && Store.user.full_name}
-      </section>
-    )
-  }
+  return (
+    <section className="main">
+      {store.user && store.user.full_name}
+      <button onClick={handleLogOut}>LOGOUT</button>
+    </section>
+  )
 }
 
 export default observer(Main)

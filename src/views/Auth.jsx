@@ -1,20 +1,21 @@
-import React from "react";
-import { authUser } from '../api'
+import React, { useContext } from "react"
+import Store from '../store'
 
 const Auth = ({ history, location }) => {
   const code = location.search.split('=').pop()
+  const store = useContext(Store)
 
   if (!code) {
     history.replace('/')
     return null
   }
 
-  authUser(code)
+  store.authUser(code)
     .then(res => {
-      if(res.success) {
+      if (res) {
         setTimeout(() => {
           history.replace('/app', res.data)
-        }, 2000);
+        }, 2000)
       }
     })
 
