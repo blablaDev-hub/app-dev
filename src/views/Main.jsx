@@ -25,6 +25,9 @@ class Main extends React.Component {
           if (!res) {
             this.props.history.replace('/')
             return
+          } else {
+            Store.user.getProjects();
+            Store.user.checkInvites();
           }
         })
     }
@@ -32,7 +35,7 @@ class Main extends React.Component {
 
   handleLogOut() {
     const { history } = this.props;
-    logOut()
+    Store.user.logOut()
       .then(_ => {
         history.replace('/');
       })

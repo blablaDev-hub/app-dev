@@ -1,4 +1,4 @@
-import { types, flow } from "mobx-state-tree";
+import { types, flow } from "mobx-state-tree"
 import User from './User'
 import { checkSession } from '../../api'
 

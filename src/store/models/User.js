@@ -1,7 +1,7 @@
-import { types, flow } from "mobx-state-tree";
-import Project from './Project';
+import { types, flow } from "mobx-state-tree"
+import Project from './Project'
 import Invite from './Invite'
-import { checkProjectInvites, getUserProjects, uploadUserCV } from "../../api";
+import { checkProjectInvites, getUserProjects, uploadUserCV, logOut } from "../../api"
 
 const User = types
   .model({
@@ -55,6 +55,14 @@ const User = types
           console.log(res.data);
           return true
         } else throw Error(res.reason)
+      } catch (err) {
+        return false
+      }
+    }),
+    logOut: flow(function*() {
+      try {
+        const res = yield logOut();
+        if (res.success) return true
       } catch (err) {
         return false
       }
