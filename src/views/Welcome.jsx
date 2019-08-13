@@ -18,7 +18,7 @@ const Welcome = ({ history }) => {
         <h1 className="welcome__copy">login with GitHub</h1>
         <a
           href="https://github.com/login/oauth/authorize?scope=read:user,repo:invite&client_id=9169882d6bdee7419193" className="welcome__link"
-          title="login"
+          title="log in"
         >
           <img
             src={require('./../assets/img/logo-github-black.png')}

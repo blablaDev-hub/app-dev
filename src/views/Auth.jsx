@@ -14,7 +14,7 @@ const Auth = ({ history, location }) => {
     .then(res => {
       if (res) {
         setTimeout(() => {
-          history.replace('/app', res.data)
+          history.replace('/app/history', res.data)
         }, 2000)
       }
     })
