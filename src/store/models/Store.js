@@ -12,6 +12,8 @@ const Store = types
         const res = yield checkSession();
         if (res.success) {
           self.setUser(res.data);
+          self.user.getProjects();
+          self.user.checkInvites();
           return true;
         } else throw Error('no auth');
       } catch (err) {

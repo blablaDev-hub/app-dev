@@ -11,9 +11,6 @@ function Main({ history }) {
         if (!res) {
           history.replace('/')
           return
-        } else {
-          store.user.getProjects();
-          store.user.checkInvites();
         }
       })
   }, [])
