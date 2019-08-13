@@ -1,22 +1,11 @@
 import React from 'react'
-import logo from '../assets/img/logo-dark.png'
-import LastPage from '@material-ui/icons/LastPage'
+import { NavLink } from 'react-router-dom'
 
-function MainNav({ logOut }) {
+function MainNav({ match }) {
   return (
-    <nav className="nav">
-      <img
-        src={logo}
-        alt="bbDev logo"
-        className="nav__logo"
-      />
-
-      <button
-        onClick={logOut}
-        className="btn btn--nav"
-      >
-        <LastPage />
-      </button>
+    <nav className="main-nav">
+      <NavLink className="main-nav__link" activeClassName="main-nav__link--active" to="/app/history">history</NavLink>
+      <NavLink className="main-nav__link" activeClassName="main-nav__link--active" to="/app/projects">projects</NavLink>
     </nav>
   )
 }
