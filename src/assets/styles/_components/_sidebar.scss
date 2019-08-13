@@ -1,0 +1,34 @@
+.sidebar {
+  grid-area: sidebar;
+
+  .h__title {
+    margin: 1em 0 .5em 0;
+  }
+}
+
+.sidebar__username {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.sidebar__avatar-figure {
+  // max-width: 220px;
+}
+
+.sidebar__avatar-caption {
+  font-style: italic;
+}
+
+.sidebar__info {
+  display: flex;
+  align-items: center;
+  line-height: 1.75;
+
+  .MuiSvgIcon-root {
+    margin-right: .5em;
+  }
+}
+
+.sidebar__info-link {
+  color: $green;
+}

@@ -1,0 +1,13 @@
+.main__wrap {
+  padding: 1em 0;
+  display: grid;
+  grid-template:
+    "sidebar content content content content"
+    / 1fr 1fr 1fr 1fr 1fr
+  ;
+  grid-gap: 1em;
+}
+
+.main__content {
+  grid-area: content;
+}

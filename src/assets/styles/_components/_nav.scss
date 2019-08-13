@@ -1,13 +1,21 @@
-.nav {
-  padding: 1em 2em;
-  border-bottom: 1px solid $gray;
+.main-nav {
   display: flex;
-  flex-grow: 1;
-  justify-content: space-between
+  align-items: center;
 }
 
-.nav__logo {
-  max-height: 3em;
-}
+.main-nav__link {
+  font-weight: bolder;
+  padding: .5em 1em;
+  border: 1px solid $gray;
+  text-decoration: none;
+  color: inherit;
 
-.btn--nav {}
+  &:hover {
+    border: 1px solid $black;
+  }
+
+  &--active {
+    color: $green;
+    border: 1px solid $black;
+  }
+}
