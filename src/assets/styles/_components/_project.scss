@@ -1,0 +1,28 @@
+.project {
+  border: 1px solid $gray;
+  padding: .5em;
+  position: relative;
+}
+
+.project__title {
+  font-weight: bold;
+  font-size: 1.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  white-space: nowrap;
+}
+
+.project__link {
+  position: absolute;
+  color: $green;
+  right: .5em;
+
+  &--top {
+    top: .5em;
+  }
+
+  &--bottom {
+    bottom: .5em;
+  }
+}

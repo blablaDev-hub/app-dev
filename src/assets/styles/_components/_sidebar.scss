@@ -18,17 +18,3 @@
 .sidebar__avatar-caption {
   font-style: italic;
 }
-
-.sidebar__info {
-  display: flex;
-  align-items: center;
-  line-height: 1.75;
-
-  .MuiSvgIcon-root {
-    margin-right: .5em;
-  }
-}
-
-.sidebar__info-link {
-  color: $green;
-}

@@ -38,8 +38,8 @@ function Main({ history, match }) {
           <div className="main__content">
             <MainNav />
 
-            <Route path={`${match.url}/history`} component={MainHistory} />
-            <Route path={`${match.url}/projects`} component={MainProjects} />
+            <Route path={`${match.url}/history/:id?`} component={MainHistory} />
+            <Route path={`${match.url}/projects/:id?`} component={MainProjects} />
           </div>
         </div>
       }

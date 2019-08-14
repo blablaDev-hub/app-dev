@@ -7,10 +7,10 @@ import AttachFile from '@material-ui/icons/AttachFile'
 
 const SidebarInfo = ({ title, children, link, copy, download }) => {
   return (
-    <p className="sidebar__info" title={title}>
+    <p className="h__icon-copy" title={title}>
       {children}
-      {link && !download && <a href={link} className="sidebar__info-link">{copy}</a>}
-      {link && download && <a href={link} download={copy} className="sidebar__info-link">{copy}</a>}
+      {link && !download && <a href={link} className="h__icon-link">{copy}</a>}
+      {link && download && <a href={link} download={copy} className="h__icon-link">{copy}</a>}
       {!link && copy}
     </p>
   )

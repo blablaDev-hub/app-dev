@@ -8,6 +8,7 @@
 @import "./_components/nav";
 @import "./_components/header";
 @import "./_components/sidebar";
+@import "./_components/project";
 
 * {
   box-sizing: border-box;
@@ -60,4 +61,22 @@ code {
 .h__title {
   font-size: 1.5em;
   font-weight: bold;
+}
+
+.h__icon-copy {
+  display: flex;
+  align-items: center;
+  line-height: 1.75;
+  max-width: 95%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  .MuiSvgIcon-root {
+    margin-right: .5em;
+  }
+
+  .h__icon-link {
+    color: $green;
+  }
 }
