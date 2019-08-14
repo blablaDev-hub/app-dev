@@ -2,16 +2,20 @@ import React, { useContext } from 'react'
 import { observer } from 'mobx-react';
 import Store from '../store'
 import Project from '../components/Project'
+import ProjectReview from '../components/ProjectReview'
 
 function MainHistory({ match }) {
-  console.log(match);
-
   const store = useContext(Store)
-  const { projects } = store.user;
+  const { id } = match.params
+  const { projects } = store.user
+  const project = id && projects ? projects.find(p => p.id == id) : null
+
   return (
-    <div className="main-history">
-      {projects && projects.map(p => <Project project={p} key={p.id} />)}
-    </div>
+    project
+    ? <ProjectReview project={project} />
+    : <div className="project-list">
+        {projects && projects.map(p => <Project project={p} key={p.id} />)}
+      </div>
   )
 }
 

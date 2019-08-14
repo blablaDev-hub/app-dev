@@ -19,10 +19,10 @@ function Project({ project }) {
       >
         {project.name}
       </h3>
-      <p className="h__icon-copy">
+      <p className="h__icon-copy" title="score">
         <Star /> {project.points}
       </p>
-      <p className="h__icon-copy">
+      <p className="h__icon-copy" title="review count">
         <BugReport /> {project.review_count} / 3
       </p>
       <p
