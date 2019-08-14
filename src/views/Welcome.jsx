@@ -7,7 +7,7 @@ const Welcome = ({ history }) => {
   store.checkSession()
     .then(res => {
       if (res) {
-        history.replace('/app')
+        history.replace('/app/history')
       }
     })
     .catch(console.error)
