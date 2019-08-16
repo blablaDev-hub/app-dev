@@ -18,6 +18,7 @@ function Main({ history, match }) {
           history.replace('/')
           return
         }
+        store.getProjects();
       })
   }, [])
 

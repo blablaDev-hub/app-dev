@@ -39,7 +39,7 @@ const User = types
       try {
         const res = yield getUserProjects()
         if (res.success) {
-          self.projects = res.data.map(p => Project.create(p))
+          self.setProjects(res.data)
           return true
         } else throw Error(res.reason)
       } catch (err) {
@@ -56,6 +56,9 @@ const User = types
         return false
       }
     }),
+    setProjects(projects) {
+      self.projects = projects.map(p => ProjectUser.create(p))
+    }
   }))
 
 export default User

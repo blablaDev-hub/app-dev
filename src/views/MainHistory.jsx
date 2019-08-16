@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { observer } from 'mobx-react';
 import Store from '../store'
-import Project from '../components/Project'
+import ProjectUser from '../components/ProjectUser'
 import ProjectReview from '../components/ProjectReview'
 
 function MainHistory({ match }) {
@@ -14,7 +14,10 @@ function MainHistory({ match }) {
     project
     ? <ProjectReview project={project} />
     : <div className="project-list">
-        {projects && projects.map(p => <Project project={p} key={p.id} />)}
+        {projects
+          ? projects.map(p => <ProjectUser project={p} key={p.id} />)
+          : <h1 className="h__title">just a sec...</h1>
+        }
       </div>
   )
 }

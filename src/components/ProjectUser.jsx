@@ -7,7 +7,7 @@ import DateRange from '@material-ui/icons/DateRange'
 import OpenInNew from '@material-ui/icons/OpenInNew'
 import Code from '@material-ui/icons/Code'
 
-function Project({ project }) {
+function ProjectUser({ project }) {
   const start = format(project.start, 'DD/MM/YYYY')
   const end = project.end ? format(project.end, 'DD/MM/YYYY') : null
 
@@ -52,4 +52,4 @@ function Project({ project }) {
   )
 }
 
-export default Project
+export default ProjectUser

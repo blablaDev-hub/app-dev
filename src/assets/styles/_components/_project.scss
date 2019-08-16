@@ -68,6 +68,23 @@
   }
 }
 
+.project__topics-wrap {
+  margin-top: 1em;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.project__topic {
+  display: inline-block;
+  font-size: .75em;
+  border-radius: 2em;
+  padding: .5em 1em;
+  margin: 0 0.5em 0.5em 0;
+  background-color: $green;
+  color: $white;
+}
+
 .markdown-body {
   // padding: .25em;
   // background-color: $gray;
