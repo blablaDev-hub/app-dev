@@ -1,10 +1,13 @@
 import { types, flow } from "mobx-state-tree"
 import User from './User'
-import { checkSession, authUser, logOut } from '../../api'
+import ProjectNew from './ProjectNew';
+import { checkSession, authUser, logOut } from '../../api/users'
+import { getProjects } from '../../api/projects'
 
 const Store = types
   .model({
-    user: types.maybeNull(User)
+    user: types.maybeNull(User),
+    projects: types.maybeNull(types.array(ProjectNew))
   })
   .actions(self => ({
     checkSession: flow(function*() {
@@ -20,10 +23,10 @@ const Store = types
         return false;
       }
     }),
-    authUser: flow(function* (code) {
+    authUser: flow(function*(code) {
       try {
         const res = yield authUser(code);
-        if(res.success) {
+        if (res.success) {
           self.setUser(res.data);
           return true;
         } else throw Error('code not valid');
@@ -39,8 +42,24 @@ const Store = types
         return false
       }
     }),
+    getProjects: flow(function*() {
+      try {
+        const res = yield getProjects();
+
+        if (res.success) {
+          self.setProjects(res.data);
+          return true
+        }
+        return new Error(`can't fetch projects`)
+      } catch (err) {
+        return err
+      }
+    }),
     setUser(user) {
       self.user = User.create(user)
+    },
+    setProjects(projects) {
+      self.projects = projects.map(p => ProjectNew.create(p))
     }
   }))
 

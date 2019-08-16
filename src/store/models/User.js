@@ -1,7 +1,7 @@
 import { types, flow } from "mobx-state-tree"
-import Project from './Project'
+import ProjectUser from './ProjectUser'
 import Invite from './Invite'
-import { checkProjectInvites, getUserProjects, uploadUserCV } from "../../api"
+import { checkProjectInvites, getUserProjects, uploadUserCV } from "../../api/users"
 
 const User = types
   .model({
@@ -19,7 +19,7 @@ const User = types
     id: types.number,
     invites: types.maybeNull(types.array(Invite)),
     location: types.string,
-    projects: types.maybeNull(types.array(Project)),
+    projects: types.maybeNull(types.array(ProjectUser)),
     registered: types.string,
     username: types.string,
   })

@@ -1,6 +1,6 @@
-import { types } from "mobx-state-tree"
+import { types, flow } from "mobx-state-tree"
 
-const Project = types
+const ProjectUser = types
   .model({
     description: types.string,
     end: types.maybeNull(types.string),
@@ -15,4 +15,4 @@ const Project = types
     user_id: types.number,
   })
 
-export default Project
+export default ProjectUser

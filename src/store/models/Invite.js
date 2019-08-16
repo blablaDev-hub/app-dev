@@ -1,4 +1,5 @@
-import { types } from "mobx-state-tree"
+import { types, flow } from "mobx-state-tree"
+import { acceptInvite } from "../../api/projects";
 
 const Repository = types.model({
   description: types.string,
@@ -12,5 +13,18 @@ const Invite = types
     id: types.number,
     repository: Repository
   })
+  .actions(self => ({
+    acceptInvite: flow(function*() {
+      try {
+        const res = yield acceptInvite(self.id);
+        if (res.success) {
+          return self.id
+        }
+        return new Error(`can't accept invite`)
+      } catch (err) {
+        return err
+      }
+    })
+  }))
 
 export default Invite
