@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from 'react';
-import { Route } from "react-router-dom";
+import React, { useEffect, useContext } from 'react'
+import { Route } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import MainHeader from '../components/MainHeader'
 import MainNav from '../components/MainNav'
