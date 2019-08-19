@@ -11,10 +11,10 @@ function ProjectReview({ project }) {
   const end = project.end ? format(project.end, 'DD/MM/YYYY') : null
 
   return (
-    <div className="project-details">
-      <h1 className="project-details__title">{project.name}</h1>
-      <small className="project-details__description">{project.description}</small>
-      <div className="project-details__scores">
+    <div className="project-review">
+      <h1 className="project-review__title">{project.name}</h1>
+      <small className="project-review__description">{project.description}</small>
+      <div className="project-review__scores">
         <p
           className="h__icon-copy"
           title="score"
@@ -36,7 +36,7 @@ function ProjectReview({ project }) {
       </div>
 
       <div className="markdown-body">
-        <Markdown>{project.review || `# still in review, come back later!`}</Markdown>
+        <Markdown>{project.review || `## still in review, come back later!`}</Markdown>
       </div>
     </div>
   )
