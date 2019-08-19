@@ -59,7 +59,11 @@ const Store = types
       self.user = User.create(user)
     },
     setProjects(projects) {
-      self.projects = projects.map(p => ProjectNew.create(p))
+      const userProjects = self.user.projects;
+      self.projects = projects.map(p => ProjectNew.create({
+        ...p,
+        disabled: !!userProjects.find(up => up.description.slice(9).split(' ')[0] === p.name) //witchcraft
+      }))
     }
   }))
 
