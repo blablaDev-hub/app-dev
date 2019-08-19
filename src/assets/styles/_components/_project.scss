@@ -37,24 +37,29 @@
   max-height: calc(100vh - 12em); // 164px
 }
 
+.project-review,
 .project-details {
   position: relative;
   padding: 1em 0;
+  overflow: auto;
+  max-height: calc(100vh - 12em);
 }
 
+.project-review__title,
 .project-details__title {
   font-weight: bold;
   font-size: 1.9em;
   margin-bottom: .5em;
 }
 
+.project-review__description,
 .project-details__description {
   font-style: italic;
   display: inline-block;
   margin-bottom: 1.5em;
 }
 
-.project-details__scores {
+.project-review__scores {
   position: absolute;
   top: 0;
   right: 0;
@@ -85,7 +90,27 @@
   color: $white;
 }
 
-.markdown-body {
-  // padding: .25em;
-  // background-color: $gray;
+.project-details__actions {
+  position: sticky;
+  top: -1em;
+  background-color: $white;
 }
+
+.project-details__start {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  background-color: $green;
+  color: $white;
+  padding: .5em 1em;
+  font-weight: bold;
+
+  &:active {
+    outline: $white;
+  }
+}
+
+// .markdown-body {
+//   padding: .25em;
+//   background-color: $gray;
+// }
