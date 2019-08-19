@@ -28,11 +28,12 @@ const User = types
       try {
         const res = yield checkProjectInvites()
         if (res.success) {
-          self.invites = res.data.map(i => Invite.create(i))
+          self.setInvites(res.data)
+          self.linkProjectInvites()
           return true
         } else throw Error(res.reason)
       } catch (err) {
-        return false
+        return err
       }
     }),
     getProjects: flow(function*() {
@@ -43,7 +44,7 @@ const User = types
           return true
         } else throw Error(res.reason)
       } catch (err) {
-        return false
+        return err
       }
     }),
     uploadCV: flow(function*(cv) {
@@ -53,11 +54,26 @@ const User = types
           return true
         } else throw Error(res.reason)
       } catch (err) {
-        return false
+        return err
       }
     }),
     setProjects(projects) {
       self.projects = projects.map(p => ProjectUser.create(p))
+    },
+    addProject(project) {
+      self.projects.push(ProjectUser.create(project))
+    },
+    setInvites(invites) {
+      self.invites = invites.map(i => Invite.create(i))
+    },
+    linkProjectInvites() {
+      self.invites.forEach(i => {
+        const project = self.projects.find(p => p.github_id == i.repository.id)
+
+        if(project) {
+          project.setInvite(i)
+        }
+      })
     }
   }))
 
