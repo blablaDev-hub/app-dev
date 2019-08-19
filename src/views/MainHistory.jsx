@@ -8,7 +8,7 @@ function MainHistory({ match }) {
   const store = useContext(Store)
   const { id } = match.params
   const { projects } = store.user
-  const project = id && projects ? projects.find(p => p.id == id) : null
+  const project = id && projects && projects.find(p => p.id == id)
 
   return (
     project
