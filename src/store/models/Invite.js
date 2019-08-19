@@ -10,7 +10,7 @@ const Repository = types.model({
 
 const Invite = types
   .model({
-    id: types.number,
+    id: types.identifierNumber,
     repository: Repository
   })
   .actions(self => ({

@@ -1,4 +1,5 @@
-import { types, flow } from "mobx-state-tree"
+import { types } from "mobx-state-tree"
+import Invite from './Invite'
 
 const ProjectUser = types
   .model({
@@ -13,6 +14,12 @@ const ProjectUser = types
     review_count: types.number,
     start: types.string,
     user_id: types.number,
+    invite: types.maybeNull(types.reference(Invite))
   })
+  .actions(self => ({
+    setInvite(invite) {
+      self.invite = invite
+    }
+  }))
 
 export default ProjectUser
