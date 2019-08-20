@@ -5,18 +5,19 @@ import ProjectUser from '../components/ProjectUser'
 import ProjectReview from '../components/ProjectReview'
 
 function MainHistory({ match }) {
-  const store = useContext(Store)
+  const { user } = useContext(Store)
   const { id } = match.params
-  const { projects } = store.user
-  const project = id && projects && projects.find(p => p.id == id)
+  const project = id && user.hasProjects && user.projects.find(p => p.id == id)
 
   return (
     project
     ? <ProjectReview project={project} />
     : <div className="project-list">
-        {projects
-          ? projects.map(p => <ProjectUser project={p} key={p.id} />)
-          : <h1 className="h__title">just a sec...</h1>
+        {!user.projects
+          ? <h1 className="h__title">just a sec...</h1>
+          : user.hasProjects
+            ? user.projects.map(p => <ProjectUser project={p} key={p.id} />)
+            : <h1 className="h__title">start a new project!</h1>
         }
       </div>
   )

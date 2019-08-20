@@ -37,7 +37,7 @@ const getUserProjects = () => fetch(`${API}/get_projects`, {
 /**
  * @desc check if any project invites are pending
  */
-const checkProjectInvites = () => fetch(`${API}/check_invites`, {
+const checkProjectInvites = () => fetch(`${API}/get_invites`, {
     method: 'GET',
     credentials: 'include',
   })

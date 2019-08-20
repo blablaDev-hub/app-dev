@@ -5,9 +5,8 @@ import ProjectNew from '../components/ProjectNew'
 import ProjectDetails from '../components/ProjectDetails'
 
 function MainProjects({ match }) {
-  const store = useContext(Store)
+  const { projects } = useContext(Store)
   const { id } = match.params
-  const { projects } = store
   const project = id && projects && projects.find(p => p.id == id)
 
   return (

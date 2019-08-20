@@ -11,10 +11,27 @@
   font-weight: bold;
 }
 
-.sidebar__avatar-figure {
-  // max-width: 220px;
-}
+// .sidebar__avatar-figure {
+//   // max-width: 220px;
+// }
 
 .sidebar__avatar-caption {
   font-style: italic;
+}
+
+.sidebar__invites {
+  padding: 1em 0;
+}
+
+.sidebar__invites-list {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: center;
+  max-height: 20em;
+  overflow: auto;
+
+  .project-invite {
+    margin-bottom: .5em;
+  }
 }

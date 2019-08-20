@@ -1,9 +1,11 @@
 import React from 'react'
+import { observer } from 'mobx-react';
 import Code from '@material-ui/icons/Code'
 import AlternateEmail from '@material-ui/icons/AlternateEmail'
 import Web from '@material-ui/icons/Web'
 import MyLocation from '@material-ui/icons/MyLocation'
 import AttachFile from '@material-ui/icons/AttachFile'
+import ProjectInvite from './ProjectInvite';
 
 const SidebarInfo = ({ title, children, link, copy, download }) => {
   return (
@@ -43,8 +45,18 @@ function Sidebar({ user }) {
       {user.blog && blog}
       {user.location && location}
       {user.cv_url && cv}
+
+      {(user.invites && user.invites.length)
+        ? <div className="sidebar__invites">
+            <h4 className="h__title">invites:</h4>
+            <div className="sidebar__invites-list">
+              {user.invites.map(i => <ProjectInvite invite={i} key={i.id} title={`${i.repository.name}`} />)}
+            </div>
+          </div>
+        : null
+      }
     </aside>
   )
 }
 
-export default Sidebar
+export default observer(Sidebar)

@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree"
+import { types, getParent } from "mobx-state-tree"
 import Invite from './Invite'
 
 const ProjectUser = types
@@ -14,11 +14,13 @@ const ProjectUser = types
     review_count: types.number,
     start: types.string,
     user_id: types.number,
-    invite: types.maybeNull(types.reference(Invite))
   })
-  .actions(self => ({
-    setInvite(invite) {
-      self.invite = invite
+  .views(self => ({
+    get invite() {
+      const { invites } = getParent(self, 2)
+
+      if (!invites) return null
+      return invites.find(i => i.repository.id == self.github_id)
     }
   }))
 

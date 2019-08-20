@@ -17,8 +17,9 @@ const ProjectNew = types.model({
         const res = yield startProject(self.name)
 
         if (res.success) {
-          const store = getParent(getParent(self))
-          store.user.addProject(res.data)
+          const store = getParent(self, 2)
+          store.user.addProject(res.data.project)
+          store.user.addInvite(res.data.invite)
           return res.data
         }
         return new Error(`can't start project`)

@@ -1,4 +1,4 @@
-import { types, flow } from "mobx-state-tree"
+import { types, flow, destroy } from "mobx-state-tree"
 import ProjectUser from './ProjectUser'
 import Invite from './Invite'
 import { checkProjectInvites, getUserProjects, uploadUserCV } from "../../api/users"
@@ -23,13 +23,20 @@ const User = types
     registered: types.string,
     username: types.string,
   })
+  .views(self => ({
+    get hasProjects() {
+      return self.projects && !!self.projects.length
+    },
+    get hasInvites() {
+      return self.invites && !!self.invites.length
+    }
+  }))
   .actions(self => ({
     checkInvites: flow(function*() {
       try {
         const res = yield checkProjectInvites()
         if (res.success) {
           self.setInvites(res.data)
-          self.linkProjectInvites()
           return true
         } else throw Error(res.reason)
       } catch (err) {
@@ -66,15 +73,12 @@ const User = types
     setInvites(invites) {
       self.invites = invites.map(i => Invite.create(i))
     },
-    linkProjectInvites() {
-      self.invites.forEach(i => {
-        const project = self.projects.find(p => p.github_id == i.repository.id)
-
-        if(project) {
-          project.setInvite(i)
-        }
-      })
-    }
+    addInvite(invite) {
+      self.invites.push(Invite.create(invite))
+    },
+    removeInvite(invite) {
+      destroy(invite)
+    },
   }))
 
 export default User
