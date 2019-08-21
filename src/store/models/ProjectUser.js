@@ -8,6 +8,7 @@ const ProjectUser = types
     github_id: types.number,
     html_url: types.string,
     id: types.number,
+    in_review: types.boolean,
     name: types.string,
     points: types.number,
     review: types.string,
@@ -15,6 +16,10 @@ const ProjectUser = types
     start: types.string,
     user_id: types.number,
   })
+  .preProcessSnapshot(snapshot => ({
+    ...snapshot,
+    in_review: !!snapshot.in_review
+  }))
   .views(self => ({
     get invite() {
       const { invites } = getParent(self, 2)

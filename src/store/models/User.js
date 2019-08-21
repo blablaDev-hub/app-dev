@@ -15,13 +15,17 @@ const User = types
     full_name: types.string,
     github_id: types.number,
     github_url: types.string,
-    hireable: types.string,
+    hireable: types.boolean,
     id: types.number,
     invites: types.maybeNull(types.array(Invite)),
     location: types.string,
     projects: types.maybeNull(types.array(ProjectUser)),
     registered: types.string,
     username: types.string,
+  })
+  .preProcessSnapshot(snapshot => snapshot && {
+    ...snapshot,
+    hireable: !!snapshot.hireable
   })
   .views(self => ({
     get hasProjects() {
